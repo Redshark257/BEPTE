@@ -1,0 +1,113 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "type": "source",
+      "cost": {
+        "cost": 0,
+        "latency": 0
+      },
+      "id": "PC"
+    },
+    {
+      "type": "destination",
+      "cost": {
+        "cost": 0,
+        "latency": 0
+      },
+      "id": "DB Server"
+    },
+    {
+      "type": "auth",
+      "cost": {
+        "cost": 2,
+        "latency": 1
+      },
+      "id": "biometric-authenticator"
+    },
+    {
+      "type": "m_encrypt",
+      "cost": {
+        "cost": 1,
+        "latency": 1
+      },
+      "id": "EDR"
+    },
+    {
+      "type": "firewall",
+      "cost": {
+        "cost": 0.5,
+        "latency": 0.5
+      },
+      "id": "L3-firewall"
+    },
+    {
+      "type": "firewall",
+      "cost": {
+        "cost": 0.8,
+        "latency": 0.7
+      },
+      "id": "L4-firewall"
+    }
+  ],
+  "links": [
+    {
+      "cost": {
+        "cost": 0,
+        "latency": 0.5
+      },
+      "source": "PC",
+      "target": "biometric-authenticator"
+    },
+    {
+      "cost": {
+        "cost": 0,
+        "latency": 0.3
+      },
+      "source": "PC",
+      "target": "L4-firewall"
+    },
+    {
+      "cost": {
+        "cost": 0,
+        "latency": 0.4
+      },
+      "source": "biometric-authenticator",
+      "target": "L3-firewall"
+    },
+    {
+      "cost": {
+        "cost": 0,
+        "latency": 0.2
+      },
+      "source": "EDR",
+      "target": "DB Server"
+    },
+    {
+      "cost": {
+        "cost": 0,
+        "latency": 0.2
+      },
+      "source": "L3-firewall",
+      "target": "DB Server"
+    },
+    {
+      "cost": {
+        "cost": 0,
+        "latency": 0.3
+      },
+      "source": "L3-firewall",
+      "target": "EDR"
+    },
+    {
+      "cost": {
+        "cost": 0,
+        "latency": 0.3
+      },
+      "source": "L4-firewall",
+      "target": "EDR"
+    }
+  ]
+}
